@@ -5,49 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Gallery</title>
   <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 1em;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    #gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
-    .memory-item {
-      margin: 20px;
-      padding: 10px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 300px;
-    }
-    .memory-item img {
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-  </style>
+  <script src="script.js" defer></script> <!-- Link to JavaScript file -->
 </head>
 <body>
   <header>
@@ -58,25 +16,20 @@
   <section id="gallery">
     <h2>Our Memories</h2>
     <div class="memory-item">
-      <img src="images/IMG_1843.heic" alt="Memory 1"> <!-- Change this to your image file -->
-      <p>seffies and nayu's phone.</p>
+      <img id="gallery-image" src="images/IMG_1843.heic" alt="Memory 1">
+      <p id="memory-description">Seffies and Nayu's phone.</p>
+      <a id="download-link" href="images/IMG_1843.heic" download>Download</a>
     </div>
-    <div class="memory-item">
-      <img src="images/IMG_3820.HEIC" alt="Memory 2"> <!-- Change this to your image file -->
-      <p>hehe, my baby.</p>
-    </div>
-    <div class="memory-item">
-      <img src="images/IMG_3821.HEIC" alt="Memory 3"> <!-- Change this to your image file -->
-      <p>moo seffiessss!!!.</p>
-      </div>
-    <div class="memory-item">
-      <img src="images/IMG_3923.HEIC" alt="Memory 4"> <!-- Change this to your image file -->
-      <p>melts!!!.</p>
-    <!-- Add more memory items as needed -->
   </section>
-  
+
+  <div class="navigation">
+    <button id="prev-btn">Previous</button>
+    <button id="next-btn">Next</button>
+  </div>
+
   <footer>
-    <p>Made with 💖 by Nayu and Tish </p>
+    <p>Made with 💖 by Nayu and Tish</p>
   </footer>
 </body>
 </html>
+
