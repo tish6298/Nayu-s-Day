@@ -8,14 +8,16 @@ const lettersFolder = {
 };
 
 document.getElementById('writeLetterBtn').addEventListener('click', () => {
-    document.getElementById('letterForm').classList.toggle('hidden');
+    document.getElementById('mainMenu').classList.add('hidden');
+    document.getElementById('letterForm').classList.remove('hidden');
     document.getElementById('lettersContainer').classList.add('hidden');
 });
 
-document.getElementById('showLettersBtn').addEventListener('click', async () => {
+document.getElementById('readLettersBtn').addEventListener('click', async () => {
     const isValidUser = await checkUser();
     if (isValidUser) {
-        document.getElementById('lettersContainer').classList.toggle('hidden');
+        document.getElementById('mainMenu').classList.add('hidden');
+        document.getElementById('lettersContainer').classList.remove('hidden');
         loadLetters();
     }
 });
@@ -32,10 +34,24 @@ document.getElementById('submitLetterBtn').addEventListener('click', async () =>
     }
 });
 
+document.getElementById('backToMenu').addEventListener('click', () => {
+    document.getElementById('letterForm').classList.add('hidden');
+    document.getElementById('mainMenu').classList.remove('hidden');
+});
+
+document.getElementById('backToMenuLetters').addEventListener('click', () => {
+    document.getElementById('lettersContainer').classList.add('hidden');
+    document.getElementById('mainMenu').classList.remove('hidden');
+});
+
 async function checkUser() {
     const username = prompt('Enter your username (Tish/Nayu):');
     const password = prompt('Enter your password:');
-    return (username === 'Tish' && password === '6298') || (username === 'Nayu' && password === '8474');
+    if ((username === 'Tish' && password === '6298') || (username === 'Nayu' && password === '8474')) {
+        return true;
+    }
+    alert('Invalid username or password');
+    return false;
 }
 
 async function loadLetters() {
@@ -52,6 +68,7 @@ async function loadLetters() {
                 <span>${file.name}</span>
                 <button onclick="downloadFile('${file.path}')">Download</button>
                 <button onclick="replyToLetter('${file.path}')">Reply</button>
+                <button onclick="previewLetter('${file.path}')">Preview</button>
             `;
             letterList.appendChild(listItem);
         }
@@ -79,11 +96,20 @@ function downloadFile(filePath) {
 }
 
 function replyToLetter(filePath) {
-    // Functionality to reply to the letter can be implemented here
     const date = filePath.split('/').pop().replace('.txt', '');
     const replyContent = prompt(`Replying to ${date}. Please write your reply:`);
     if (replyContent) {
         const fullReply = `Replying to >> ${date}\n\n${replyContent}`;
-        uploadFile(fullReply, filePath); // Save the reply with the same file path
+        uploadFile(fullReply, filePath);
     }
+}
+
+function previewLetter(filePath) {
+    const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPOSITORY_NAME}/main/${filePath}`;
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            alert(`Preview of letter:\n\n${data}`);
+        })
+        .catch(error => console.error('Error fetching letter:', error));
 }
