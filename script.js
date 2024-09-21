@@ -1,32 +1,31 @@
-document.getElementById('upload-button').addEventListener('click', function() {
-    const fileInput = document.getElementById('file-input');
-    const files = fileInput.files;
-    const galleryContainer = document.getElementById('gallery-container');
+const fileInput = document.getElementById('file-input');
+const uploadBtn = document.getElementById('upload-btn');
+const gallery = document.getElementById('gallery');
 
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const memoryItem = document.createElement('div');
-        memoryItem.className = 'memory-item';
+uploadBtn.addEventListener('click', () => {
+  const files = fileInput.files;
+  if (files.length === 0) return;
 
-        const fileURL = URL.createObjectURL(file);
-        if (file.type.startsWith('image/')) {
-            const img = document.createElement('img');
-            img.src = fileURL;
-            memoryItem.appendChild(img);
-        } else if (file.type.startsWith('video/')) {
-            const video = document.createElement('video');
-            video.src = fileURL;
-            video.controls = true;
-            memoryItem.appendChild(video);
-        }
+  for (const file of files) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const memoryItem = document.createElement('div');
+      memoryItem.className = 'memory-item';
+      
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.alt = file.name;
+        memoryItem.appendChild(img);
+      } else if (file.type.startsWith('video/')) {
+        const video = document.createElement('video');
+        video.src = e.target.result;
+        video.controls = true;
+        memoryItem.appendChild(video);
+      }
 
-        const downloadLink = document.createElement('a');
-        downloadLink.href = fileURL;
-        downloadLink.download = file.name;
-        downloadLink.textContent = 'Download';
-        downloadLink.className = 'download-link';
-        memoryItem.appendChild(downloadLink);
-
-        galleryContainer.appendChild(memoryItem);
-    }
+      gallery.appendChild(memoryItem);
+    };
+    reader.readAsDataURL(file);
+  }
 });
