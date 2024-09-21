@@ -13,8 +13,11 @@
     </header>
 
     <div class="container">
-        <button id="writeLetterBtn">Write a Letter</button>
-        <button id="showLettersBtn">Show Previous Letters</button>
+        <div id="mainMenu">
+            <button id="writeLetterBtn">Write a Letter</button>
+            <button id="readLettersBtn">Read Letters</button>
+        </div>
+
         <div id="letterForm" class="hidden">
             <select id="recipientSelect">
                 <option value="For Nayu">For Nayu</option>
@@ -22,10 +25,13 @@
             </select>
             <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
             <button id="submitLetterBtn">Submit Letter</button>
+            <button id="backToMenu">Back</button>
         </div>
+
         <div id="lettersContainer" class="hidden">
             <h2>Your Letters</h2>
             <div id="letterList"></div>
+            <button id="backToMenuLetters">Back</button>
         </div>
     </div>
 
