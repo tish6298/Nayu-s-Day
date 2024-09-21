@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Writing App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@octokit/rest/dist/octokit-rest.min.js"></script>
 </head>
 <body>
     <header>
@@ -12,7 +13,8 @@
     </header>
 
     <div class="container">
-        <button id="write-letter">Write a Letter</button>
+        <button id="writeLetterBtn">Write a Letter</button>
+        <button id="showLettersBtn">Show Previous Letters</button>
         <div id="letterForm" class="hidden">
             <select id="recipientSelect">
                 <option value="For Nayu">For Nayu</option>
@@ -21,7 +23,7 @@
             <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
             <button id="submitLetterBtn">Submit Letter</button>
         </div>
-        <div id="lettersContainer">
+        <div id="lettersContainer" class="hidden">
             <h2>Your Letters</h2>
             <div id="letterList"></div>
         </div>
