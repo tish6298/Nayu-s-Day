@@ -16,16 +16,23 @@
   
   <section id="gallery">
     <h2>Our Memories</h2>
-    <div class="memory-item">
-      <img id="gallery-image" src="" alt="Memory Image" />
-      <p id="memory-description"></p>
-      <a id="download-link" href="#" download>Download</a>
+    <div class="memory-grid">
+      <!-- Memory items will be dynamically generated here -->
     </div>
   </section>
 
-  <div class="navigation">
-    <button id="prev-btn">Previous</button>
-    <button id="next-btn">Next</button>
+  <!-- Fullscreen Modal for image preview -->
+  <div id="fullscreen-modal" class="modal">
+    <span class="close" id="close-modal">&times;</span>
+    <div class="modal-content">
+      <img id="fullscreen-image" src="" alt="Fullscreen Memory" />
+      <p id="fullscreen-description"></p>
+      <div class="fullscreen-navigation">
+        <button id="prev-fullscreen-btn">Previous</button>
+        <button id="next-fullscreen-btn">Next</button>
+        <a id="download-fullscreen-link" href="#" download>Download</a>
+      </div>
+    </div>
   </div>
 
   <footer>
