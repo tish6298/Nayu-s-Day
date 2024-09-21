@@ -20,23 +20,56 @@ h1 {
   padding: 20px;
 }
 
-.memory-item {
-  margin: 20px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: auto;
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .memory-item img {
   max-width: 100%;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-.navigation {
-  margin: 20px;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fullscreen-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 button {
@@ -54,3 +87,4 @@ footer {
   width: 100%;
   bottom: 0;
 }
+
