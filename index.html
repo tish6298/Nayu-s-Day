@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memory Gallery</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-  <script src="https://cdn.rawgit.com/antimatter15/heic2any/master/heic2any.js"></script> <!-- Include HEIC conversion library -->
-  <script src="script.js" defer></script> <!-- Link to your JavaScript file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Our Memory Gallery</h1>
-    <p>Explore our cherished moments together!</p>
-  </header>
-  
-  <section id="gallery">
-    <h2>Our Memories</h2>
-    <div class="memory-grid">
-      <!-- Memory items will be dynamically generated here -->
-    </div>
-  </section>
-
-  <!-- Fullscreen Modal for image preview -->
-  <div id="fullscreen-modal" class="modal">
-    <span class="close" id="close-modal">&times;</span>
-    <div class="modal-content">
-      <img id="fullscreen-image" src="" alt="Fullscreen Memory" />
-      <p id="fullscreen-description"></p>
-      <div class="fullscreen-navigation">
-        <button id="prev-fullscreen-btn">Previous</button>
-        <button id="next-fullscreen-btn">Next</button>
-        <a id="download-fullscreen-link" href="#" download>Download</a>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>Made with 💖 by Nayu and Tish</p>
-  </footer>
+    <header>
+        <h1>Upload Your Memories</h1>
+    </header>
+    
+    <section id="upload-section">
+        <input type="file" id="file-input" multiple accept="image/*,video/*">
+        <button id="upload-button">Upload</button>
+    </section>
+    
+    <section id="gallery">
+        <h2>Your Gallery</h2>
+        <div id="gallery-container"></div>
+    </section>
+    
+    <footer>
+        <p>Made with 💖 by Nayu and Tish</p>
+    </footer>
 </body>
 </html>
