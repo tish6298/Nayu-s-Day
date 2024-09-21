@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Gallery</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Upload Your Memories</h1>
-    </header>
-    
-    <section id="upload-section">
-        <input type="file" id="file-input" multiple accept="image/*,video/*">
-        <button id="upload-button">Upload</button>
-    </section>
-    
-    <section id="gallery">
-        <h2>Your Gallery</h2>
-        <div id="gallery-container"></div>
-    </section>
-    
-    <footer>
-        <p>Made with 💖 by Nayu and Tish</p>
-    </footer>
+  <header>
+    <h1>Welcome to Our Memory Gallery</h1>
+    <p>Upload, explore, and cherish your moments!</p>
+  </header>
+
+  <main>
+    <input type="file" id="file-input" multiple accept="image/*, video/*" />
+    <button id="upload-btn">Upload</button>
+    <div id="gallery"></div>
+  </main>
+
+  <footer>
+    <p>Made with 💖 by Nayu and Tish</p>
+  </footer>
 </body>
 </html>
