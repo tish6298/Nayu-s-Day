@@ -9,12 +9,40 @@ const images = [
 let currentIndex = 0;
 
 function updateGallery() {
-  const imageElement = document.getElementById('gallery-image');
-  const descriptionElement = document.getElementById('memory-description');
-  const downloadLink = document.getElementById('download-link');
+  const memoryGrid = document.querySelector('.memory-grid');
+  memoryGrid.innerHTML = ''; // Clear existing items
 
-  const currentImage = images[currentIndex];
+  images.forEach((image, index) => {
+    const div = document.createElement('div');
+    div.className = 'memory-item';
+    div.innerHTML = `
+      <img src="${image.src}" alt="Memory Image" onclick="openFullscreen(${index})" />
+      <p>${image.desc}</p>
+    `;
+    memoryGrid.appendChild(div);
+  });
+}
 
+function openFullscreen(index) {
+  currentIndex = index;
+  const modal = document.getElementById('fullscreen-modal');
+  const imageElement = document.getElementById('fullscreen-image');
+  const descriptionElement = document.getElementById('fullscreen-description');
+  const downloadLink = document.getElementById('download-fullscreen-link');
+
+  loadImage(currentIndex, (src, desc) => {
+    imageElement.src = src;
+    descriptionElement.innerText = desc;
+    downloadLink.href = src;
+  });
+
+  modal.style.display = "block";
+}
+
+// Load image and handle conversion
+function loadImage(index, callback) {
+  const currentImage = images[index];
+  
   if (currentImage.src.endsWith('.heic') || currentImage.src.endsWith('.HEIC')) {
     fetch(currentImage.src)
       .then(response => response.blob())
@@ -23,61 +51,67 @@ function updateGallery() {
       })
       .then(convertedBlob => {
         const url = URL.createObjectURL(convertedBlob);
-        imageElement.src = url;
-        descriptionElement.innerText = currentImage.desc;
-        downloadLink.href = url; // Update download link to converted image
+        callback(url, currentImage.desc);
       })
       .catch(error => {
         console.error('Error converting HEIC image:', error);
-        // Fallback to original image if conversion fails
-        imageElement.src = currentImage.src;
-        descriptionElement.innerText = currentImage.desc;
-        downloadLink.href = currentImage.src;
+        callback(currentImage.src, currentImage.desc); // Fallback to original
       });
   } else {
-    imageElement.src = currentImage.src;
-    descriptionElement.innerText = currentImage.desc;
-    downloadLink.href = currentImage.src; // Update download link for JPG
+    callback(currentImage.src, currentImage.desc); // Directly load JPG
   }
 }
 
+function closeFullscreen() {
+  document.getElementById('fullscreen-modal').style.display = "none";
+}
+
+// Navigation functions
 function nextImage() {
   currentIndex = (currentIndex + 1) % images.length;
-  updateGallery();
+  loadImage(currentIndex, (src, desc) => {
+    document.getElementById('fullscreen-image').src = src;
+    document.getElementById('fullscreen-description').innerText = desc;
+    document.getElementById('download-fullscreen-link').href = src;
+  });
 }
 
 function prevImage() {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateGallery();
+  loadImage(currentIndex, (src, desc) => {
+    document.getElementById('fullscreen-image').src = src;
+    document.getElementById('fullscreen-description').innerText = desc;
+    document.getElementById('download-fullscreen-link').href = src;
+  });
 }
 
 // Event listeners for buttons
-document.getElementById('next-btn').addEventListener('click', nextImage);
-document.getElementById('prev-btn').addEventListener('click', prevImage);
+document.getElementById('close-modal').addEventListener('click', closeFullscreen);
+document.getElementById('next-fullscreen-btn').addEventListener('click', nextImage);
+document.getElementById('prev-fullscreen-btn').addEventListener('click', prevImage);
 
-// Keyboard navigation
+// Close fullscreen with Escape key
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowRight') {
-    nextImage();
-  } else if (event.key === 'ArrowLeft') {
-    prevImage();
+  if (event.key === 'Escape') {
+    closeFullscreen();
   }
 });
 
 // Touch/swipe support for mobile
-let touchStartX = 0;
+let touchStartY = 0;
 
 document.addEventListener('touchstart', (event) => {
-  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
 });
 
 document.addEventListener('touchmove', (event) => {
-  const touchEndX = event.touches[0].clientX;
-  if (touchStartX - touchEndX > 50) {
-    nextImage();
-  } else if (touchEndX - touchStartX > 50) {
-    prevImage();
+  const touchEndY = event.touches[0].clientY;
+  if (touchStartY - touchEndY > 50) {
+    nextImage(); // Swipe up to go to the next image
+  } else if (touchEndY - touchStartY > 50) {
+    prevImage(); // Swipe down to go to the previous image
   }
 });
 
-updateGallery(); // Initialize gallery
+// Initialize gallery
+updateGallery();
