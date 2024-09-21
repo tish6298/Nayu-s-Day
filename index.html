@@ -5,34 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Writing App</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@octokit/rest/dist/octokit-rest.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to the Letter Writing App</h1>
-        <p>Select a folder to view letters or write a new one.</p>
+        <h1>Letter Writing App</h1>
     </header>
-    
-    <main>
-        <button id="forNayuBtn">For Nayu</button>
-        <button id="forTishBtn">For Tish</button>
-        <button id="newLetterBtn">Write a Letter</button>
-    </main>
 
-    <div id="letterList" class="hidden"></div>
-
-    <div id="editor" class="hidden">
-        <h2>Write a Letter</h2>
-        <select id="recipientSelect">
-            <option value="Nayu">For Nayu</option>
-            <option value="Tish">For Tish</option>
-        </select>
-        <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
-        <button id="submitLetterBtn">Finish Writing</button>
+    <div class="container">
+        <button id="writeLetterBtn">Write a Letter</button>
+        <div id="letterForm" class="hidden">
+            <select id="recipientSelect">
+                <option value="For Nayu">For Nayu</option>
+                <option value="For Tish">For Tish</option>
+            </select>
+            <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
+            <button id="submitLetterBtn">Submit Letter</button>
+        </div>
+        <div id="lettersContainer">
+            <h2>Your Letters</h2>
+            <div id="letterList"></div>
+        </div>
     </div>
 
     <footer>
         <p>Made with 💖 by Nayu and Tish</p>
     </footer>
+    
+    <script src="script.js" defer></script>
 </body>
 </html>
