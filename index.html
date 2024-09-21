@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Gallery</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1em;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .memory-item {
+      margin: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 300px;
+    }
+    .memory-item img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Memory Gallery</h1>
+    <p>Explore our cherished moments together!</p>
+  </header>
+  
+  <section id="gallery">
+    <h2>Our Memories</h2>
+    <div class="memory-item">
+      <img src="images/memory1.jpg" alt="Memory 1"> <!-- Change this to your image file -->
+      <p>A beautiful day at the park.</p>
+    </div>
+    <div class="memory-item">
+      <img src="images/memory2.jpg" alt="Memory 2"> <!-- Change this to your image file -->
+      <p>Our favorite restaurant visit.</p>
+    </div>
+    <!-- Add more memory items as needed -->
+  </section>
+  
+  <footer>
+    <p>Made with 💖 by You and Your Girlfriend</p>
+  </footer>
+</body>
+</html>
