@@ -12,10 +12,33 @@ function updateGallery() {
   const imageElement = document.getElementById('gallery-image');
   const descriptionElement = document.getElementById('memory-description');
   const downloadLink = document.getElementById('download-link');
-  
-  imageElement.src = images[currentIndex].src;
-  descriptionElement.innerText = images[currentIndex].desc;
-  downloadLink.href = images[currentIndex].src;
+
+  const currentImage = images[currentIndex];
+
+  if (currentImage.src.endsWith('.heic') || currentImage.src.endsWith('.HEIC')) {
+    fetch(currentImage.src)
+      .then(response => response.blob())
+      .then(blob => {
+        return heic2any({ blob: blob, toType: 'image/jpeg' });
+      })
+      .then(convertedBlob => {
+        const url = URL.createObjectURL(convertedBlob);
+        imageElement.src = url;
+        descriptionElement.innerText = currentImage.desc;
+        downloadLink.href = url; // Update download link to converted image
+      })
+      .catch(error => {
+        console.error('Error converting HEIC image:', error);
+        // Fallback to original image if conversion fails
+        imageElement.src = currentImage.src;
+        descriptionElement.innerText = currentImage.desc;
+        downloadLink.href = currentImage.src;
+      });
+  } else {
+    imageElement.src = currentImage.src;
+    descriptionElement.innerText = currentImage.desc;
+    downloadLink.href = currentImage.src; // Update download link for JPG
+  }
 }
 
 function nextImage() {
