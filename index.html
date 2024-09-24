@@ -4,46 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Writing App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <header>
-        <h1>Welcome to the Letter Writing App</h1>
+        <h1>Letter Writing App</h1>
     </header>
 
-    <div id="main-options">
-        <button id="writeLetterBtn">Write a Letter</button>
-        <button id="showLettersBtn">Show Letters</button>
-    </div>
+    <div class="container">
+        <div id="mainMenu">
+            <button id="writeLetterBtn">Write a Letter</button>
+            <button id="readLettersBtn">Read Letters</button>
+        </div>
 
-    <div id="loginForm" class="hidden">
-        <h2>Enter your credentials to view letters</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter username">
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password">
-        <button id="loginBtn">Login</button>
-    </div>
+        <div id="letterForm" class="hidden">
+            <select id="recipientSelect">
+                <option value="">Select Recipient</option>
+                <option value="For Nayu">For Nayu</option>
+                <option value="For Tish">For Tish</option>
+            </select>
+            <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
+            <button id="submitLetterBtn">Submit Letter</button>
+            <button id="backToMenu">Back to Menu</button>
+        </div>
 
-    <div id="letterForm" class="hidden">
-        <h2>Write a Letter</h2>
-        <select id="recipientSelect">
-            <option value="For Nayu">For Nayu</option>
-            <option value="For Tish">For Tish</option>
-        </select>
-        <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
-        <button id="submitLetterBtn">Submit Letter</button>
-    </div>
-
-    <div id="lettersContainer" class="hidden">
-        <h2>Your Letters</h2>
-        <div id="letterList"></div>
+        <div id="lettersContainer" class="hidden">
+            <h2>Your Letters</h2>
+            <div id="letterList"></div>
+            <button id="backToMenu">Back to Menu</button>
+        </div>
     </div>
 
     <footer>
         <p>Made with 💖 by Nayu and Tish</p>
     </footer>
-
-    <script src="script.js" defer></script>
+    
+    <script src="script.js" defer></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
