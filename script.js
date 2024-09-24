@@ -1,8 +1,8 @@
 const GITHUB_TOKEN = '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'; // Your GitHub token
 const GITHUB_USERNAME = 'tish6298'; // Your GitHub username
 const REPOSITORY_NAME = 'tishandnayu'; // Your repository name
-const FOLDER_NAYU = 'for_nayu/';
-const FOLDER_TISH = 'for_tish/';
+const FOLDER_NAYU = 'for_nayu/'; // Folder for Nayu's letters
+const FOLDER_TISH = 'for_tish/'; // Folder for Tish's letters
 
 // Display letter form when "Write a Letter" button is clicked
 document.getElementById('writeLetterBtn').addEventListener('click', () => {
@@ -48,6 +48,7 @@ document.getElementById('submitLetterBtn').addEventListener('click', async () =>
 document.getElementById('backToMenu').addEventListener('click', () => {
     document.getElementById('lettersContainer').classList.add('hidden');
     document.getElementById('mainMenu').classList.remove('hidden');
+    document.getElementById('letterForm').classList.add('hidden'); // Hide letter form when going back
 });
 
 // Upload letter to GitHub
