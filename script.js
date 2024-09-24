@@ -1,4 +1,4 @@
-const GITHUB_TOKEN = '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'; // Your GitHub token
+const GITHUB_TOKEN = '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'; // Your GitHub token
 const GITHUB_USERNAME = 'tish6298'; // Your GitHub username
 const REPOSITORY_NAME = 'tishandnayu'; // Your repository name
 const FOLDER_NAYU = 'for_nayu/';
