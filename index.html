@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Writing App</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <title>Letter Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Letter Writing App</h1>
-    </header>
-
     <div class="container">
+        <header>
+            <h1>Letter Exchange</h1>
+        </header>
+
         <div id="mainMenu">
             <button id="writeLetterBtn">Write a Letter</button>
             <button id="readLettersBtn">Read Letters</button>
         </div>
 
         <div id="letterForm" class="hidden">
+            <h2>Write a Letter</h2>
+            <label for="recipientSelect">Select Recipient:</label>
             <select id="recipientSelect">
-                <option value="">Select Recipient</option>
                 <option value="For Nayu">For Nayu</option>
                 <option value="For Tish">For Tish</option>
             </select>
@@ -34,11 +36,5 @@
             <button id="backToMenu">Back to Menu</button>
         </div>
     </div>
-
-    <footer>
-        <p>Made with 💖 by Nayu and Tish</p>
-    </footer>
-    
-    <script src="script.js" defer></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
