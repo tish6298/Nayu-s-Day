@@ -10,9 +10,9 @@ document.getElementById('writeLetterBtn').addEventListener('click', () => {
     document.getElementById('letterForm').classList.remove('hidden');
 });
 
-// Prompt for credentials when "Read Letters" is clicked
+// Load letters from respective folders when "Read Letters" is clicked
 document.getElementById('readLettersBtn').addEventListener('click', () => {
-    promptForCredentials();
+    loadLetters(FOLDER_NAYU); // Change to FOLDER_TISH if needed to load Tish's letters
 });
 
 // Handle letter submission
@@ -73,22 +73,7 @@ async function uploadFile(fileContent, fileName) {
     return response.json();
 }
 
-// Prompt for credentials and load letters from the respective folder
-async function promptForCredentials() {
-    const username = prompt("Enter your username (Tish/Nayu):");
-    const password = prompt("Enter your password:");
-
-    if (username === 'Nayu' && password === '8474') {
-        loadLetters(FOLDER_NAYU);
-    } else if (username === 'Tish' && password === '6298') {
-        loadLetters(FOLDER_TISH);
-    } else {
-        alert('Incorrect username or password.');
-        return;
-    }
-}
-
-// Load letters from the respective folder and display them
+// Load letters from the specified folder and display them
 async function loadLetters(folder) {
     document.getElementById('mainMenu').classList.add('hidden');
     document.getElementById('lettersContainer').classList.remove('hidden');
@@ -144,14 +129,11 @@ async function previewLetter(fileName) {
         threeDots.innerText = '...';
         threeDots.classList.add('three-dots');
 
-        // Handle actions (download or reply)
+        // Handle reply action
         threeDots.onclick = (e) => {
             e.stopPropagation(); // Prevent triggering the letter click event
-            const action = prompt("Choose an action: download, reply");
-            if (action === 'download') {
-                downloadLetter(content);
-            } else if (action === 'reply') {
-                const reply = prompt("Write your reply:");
+            const reply = prompt("Write your reply:");
+            if (reply) {
                 uploadFile(`Replying to: ${content}\n${reply}`, `${fileName.replace('.txt', '')}_reply_${new Date().toISOString().split('T')[0]}.txt`);
             }
         };
@@ -163,16 +145,4 @@ async function previewLetter(fileName) {
         alert('Failed to preview letter: ' + error.message);
         console.error('Error previewing letter:', error); // Log detailed error
     }
-}
-
-// Download letter as a text file
-function downloadLetter(content) {
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'letter.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
 }
