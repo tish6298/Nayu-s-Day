@@ -3,38 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="js/script.js" defer></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Happy Birthday Nayu!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Letter Exchange</h1>
-        </header>
-
-        <div id="mainMenu">
-            <button id="writeLetterBtn">Write a Letter</button>
-            <button id="readLettersBtn">Read Letters</button>
-        </div>
-
-        <div id="letterForm" class="hidden">
-            <h2>Write a Letter</h2>
-            <label for="recipientSelect">Select Recipient:</label>
-            <select id="recipientSelect">
-                <option value="For Nayu">For Nayu</option>
-                <option value="For Tish">For Tish</option>
-            </select>
-            <textarea id="letterContent" placeholder="Write your letter here..."></textarea>
-            <button id="submitLetterBtn">Submit Letter</button>
-            <button id="backToMenu">Back to Menu</button>
-        </div>
-
-        <div id="lettersContainer" class="hidden">
-            <h2>Your Letters</h2>
-            <div id="letterList"></div>
-            <button id="backToMenu">Back to Menu</button>
-        </div>
+        <h1 id="birthday-message">Happy Birthday, Nayu!</h1>
+        <p class="subtext">Wishing you all the happiness in the world!</p>
+        <button onclick="showConfetti()">Celebrate 🎉</button>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
