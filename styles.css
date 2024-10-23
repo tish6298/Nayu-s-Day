@@ -1,100 +1,60 @@
+/* General Styles */
 body {
-    font-family: 'Georgia', serif;
-    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffccff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
+/* Container */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to right, #ffffff, #e6e6e6);
-    border-radius: 10px;
-}
-
-header {
     text-align: center;
-    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out;
 }
 
-h1 {
-    font-size: 2.5em;
-    color: #2c3e50;
+/* Title */
+#birthday-message {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff69b4;
+    text-shadow: 2px 2px #ffa07a;
+    margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 1.8em;
-    color: #2980b9;
+/* Subtext */
+.subtext {
+    font-size: 1.5rem;
+    color: #8b008b;
+    margin-bottom: 20px;
 }
 
+/* Button */
 button {
-    padding: 10px 20px;
-    margin: 10px;
+    background-color: #ff1493;
     border: none;
-    border-radius: 5px;
-    background-color: #2980b9;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     color: white;
-    font-size: 1em;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #3498db;
+    background-color: #c71585;
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1em;
-    font-family: 'Courier New', Courier, monospace;
-    resize: none;
-}
-
-textarea:focus {
-    border-color: #2980b9;
-    outline: none;
-}
-
-.hidden {
-    display: none;
-}
-
-#letterList {
-    margin-top: 20px;
-}
-
-.letter-item {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #ecf0f1;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.letter-item:hover {
-    background-color: #d5dbdb;
-}
-
-.letter-preview {
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.three-dots {
-    cursor: pointer;
-    color: #2980b9;
-    font-weight: bold;
+/* Keyframe for fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
